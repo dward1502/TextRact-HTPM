@@ -24,7 +24,7 @@ const p1Bold = {
 const bulPoint = String.fromCharCode( 8226 );
 const squareFilled = String.fromCharCode( 9724 );
 
-let tenant1, tenant2, tenant3, address, unitNum, city, zip, createdDate, checkFamResidence, checkMultiResidence, unitType, county, hoa, hoaDocs, hoaname, noPetCheck, petCheck;
+let tenant1, tenant2, tenant3, address, unitNum, city, zip, createdDate, checkFamResidence, checkMultiResidence, unitType, county, hoa, hoaDocs, hoaname, noPetCheck, petCheck, noKnowlLead;
 
 tenant1 = 'Luke Skywalker'; tenant2 = 'Han Solo'; tenant3 = 'Chewbacca';
 address = '3668 Quimby St'; unitNum = 1; city = 'San Diego'; zip = 92106;
@@ -32,9 +32,9 @@ createdDate = "7/4/2019";
 checkFamResidence = String.fromCharCode( 9723 ); checkMultiResidence = String.fromCharCode( 9723 ); unitType = 'Residential'; county = 'San Diego'; noPetCheck = String.fromCharCode( 9723 ); petCheck = String.fromCharCode( 9723 ); hoa = String.fromCharCode( 9723 ); hoaDocs = String.fromCharCode( 9723 );
 hoaname = 'Point Loma';
 
-let numMail,mailBoxNum,numResidence,numOpener,numGate,commonArea,parkPerm,numStorSpace,numParkSpot,storNum,parkNum;
+let numMail,mailBoxNum,numResidence,numOpener,numGate,commonArea,parkPerm,numStorSpace,numParkSpot,storNum,parkNum, leadDisclosuresApply;
 
-numMail = 11; mailBoxNum = 2; numResidence= 1; numOpener= 3; numGate=232; commonArea= 'yes'; parkPerm='no'; numStorSpace = 1; numParkSpot = 1; storNum = 2; parkNum = 1;
+numMail = 11; mailBoxNum = 2; numResidence= 1; numOpener= 3; numGate=232; commonArea= 'yes'; parkPerm='no'; numStorSpace = 1; numParkSpot = 1; storNum = 2; parkNum = 1; leadDisclosuresApply = String.fromCharCode( 9723 );noKnowlLead = String.fromCharCode( 9723 );
 let startRent, endRent;
 startRent = '2/2/2019';
 endRent = '5/5/2019';
@@ -1071,25 +1071,21 @@ const data = [
     val:'Payment instructions (including forms of payment accepted, to whom payments are to be made, and the address where payments are to be made), are specified in the Variable Lease Term section.Any payments made by mail or placed in a drop box are made at your risk and must be received by us by the due date.You will incur a $25.00 charge for the first dishonored check and $35.00 for any subsequent dishonored check. After receiving any dishonored payment (whether under this Agreement or any other), we reserve the right to require all further payments made by you or on your behalf to be made by money order, certified check or cashier’s check.If a third party tenders a payment on your behalf, we reserve the right to require an acknowledgment from the third party as specified in Civil Code §1947.3(a)(3).',
     opt:p1Options
   },
-  {type:'linebreak'},
   {
     type:'text',
     val:'We may, but are not required, to accept payments electronically or by credit card, either directly or through a third party payment service system.If you are interested in these payment methods, request information about our current electronic and credit card payment acceptance policy from the management office.We reserve the right at any time to change our electronic and credit card payment policies and/or procedures, the third party payment service system and/or to cease accepting electronic or credit card payments. It is your responsibility before any payment is due to verify whether we are currently accepting payments electronically or by credit card, the proper procedure, and to arrange with us or any third party payment service system to pay electronically or by credit card.A third party payment service system may charge a fee for this service to you and will have specific requirements and procedures you must follow.If any electronic or credit card payment to us or the third party payment service system, or if any payment tendered on your behalf by a third party, is reversed, not honored, or results in a “charge back,” you will be responsible for Late Charges and any additional cost to us or the payment service system, and we will retain all rights and remedies, including the right to terminate your tenancy.',
     opt:p1Options
   },
-  {type:'linebreak'},
   {
     type:'text',
     val:'If you provide a check as payment, you authorize us either to use information from the check to make a one-time electronic fund transfer from the account or to process the payment as a check transaction.  When we use information from the check to make an electronic fund transfer, funds may be withdrawn from the account as soon as the same day we receive the payment, and you will not receive the check back from your financial institution.',
     opt:p1Options
   },
-  {type:'linebreak'},
   {
     type:'text',
     val:'Use of drop boxes is at your risk. You can reduce the risk of theft of your payment by using electronic payment methods (if we accept electronic payments), or by mailing or personally delivering payments as directed.All checks and money orders must be made payable as specified on the first page of this Agreement.Do not leave the name of the payee blank on checks or money orders; you will not receive a payment credit if the check or money order is stolen and cashed by another party.',
     opt:p1Options
   },
-  {type:'linebreak'},
   {
     type:'text',
     val:'3. Security Deposit',
@@ -1101,7 +1097,6 @@ const data = [
     val:'We will hold the Security Deposit in compliance with California Civil Code §1950.5.We will fully refund it to you if you comply with all of your rental obligations.Unless required by law, we will not hold the Security Deposit in trust, deposit it in a segregated account, invest it in an interest-bearing account, nor pay you any interest on the Security Deposit.If you do not comply with all of your rental obligations, we may use the security deposit to:',
     opt:p1Options
   },
-  {type:'linebreak'},
   {
     type:'text',
     val:`${bulPoint} Compensate us for your payment default; or breach of any other obligation under this Agreement, including the cost of recovering possession of the Residence, rental commissions, advertising expenses and other costs incurred because of your breach of the Agreement and the Rent and other amounts due through the end of the Agreement term, (including Rent due up through the date you vacate the Residence, Rent due through the date of judgment, and Rent due after the date of judgment through the end of the original Agreement term) and any other amount necessary to compensate us for your breach of the Agreement, minus amounts we reasonably could have avoided;`,
@@ -2340,10 +2335,772 @@ const data = [
   {type:'linebreak'},
   {
     type:'text',
-    val:"You agree to:",
+    val:"37. No Release",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"You will not be released from this Agreement on the grounds of voluntary or involuntary school withdrawal or transfer, business transfer, layoff or termination, marriage, divorce, marriage reconciliation, loss of co-Residents, bad health, or any other reason unless we agree otherwise in writing or unless the Military – Early Termination section above applies.  We may grant or withhold consent to a release in our sole discretion.",
     opt:p1Options
   },
   {type:'linebreak'},
+  {
+    type:'text',
+    val:"38. Occupants",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"The Residence may be occupied only by the Resident(s) and all other authorized Occupants specified above in the Variable Lease Term section.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"39. Parking / Garage / Vehicles",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"If parking spaces or garages are assigned, you may park on the Property only in the garage or parking space(s) specified in the Variable Lease Term section. Parking spaces and garages may not be used for operation of a business or as an extension of the living area of the Residence.  We reserve the right to temporarily or permanently change your parking space(s) or garage and to assign another to you with 5 days’ prior notice to you.  We may issue parking stickers or other devices to control parking.  If issued, you must use the parking control devices.   If specified in the Variable Lease Term section, monthly Garage/Parking Rent is charged for this privilege.  Parking spaces (if any) may be used only for parking passenger automobiles or light utility vehicles. If a parking space or garage has been assigned to you, you must park in it to maximize parking for others.  If an exclusive-use garage has been designated for your use, you may use your garage secondarily for storage, but only if it doesn’t interfere with your ability to park in the garage.  Garage doors must be kept closed and locked unless you are entering or exiting the garage.  Vehicles not kept in compliance with applicable rules, regulations and law are subject to towing at the vehicle owner’s expense.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:" A vehicle may be towed if it: ",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(A) has flat tires or other condition rendering it inoperable;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(B) is leaking fluids;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(C) for non-assigned parking spaces, has not been moved in more than 96 hours;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(D) takes up more than one parking space;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(E) belongs to a Resident or Occupant who has surrendered or abandoned the Residence;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(F) is parked in a marked accessible space without the legally required Disabled Person Plate or Placard insignia;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(G) blocks another vehicle from exiting;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`(H) is parked in a fire lane or designated "no parking" or "restricted parking" area;`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(I) is parked in a space reserved for other residents;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(J) is not properly parked in a designated area;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(K) blocks access to a garbage area, entrance, driveway, other parking spaces, or other area; (L) cannot lawfully be operated as a vehicle on the road;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(M) has a malfunctioning alarm or has an alarm which is not silenced within 10 minutes;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(N) is parked in a designated visitor or office parking space; or",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(O) any other reason allowed by law.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"Gasoline, fuels or other explosive materials may not be stored anywhere on the Property.  You will be responsible for oil stains and other damage caused by your vehicles and the vehicles of your Related Parties.  Parking is at the risk of the vehicle owner or operator. We will have no liability for damage to or loss of any vehicle or any personal property contained within a vehicle or a garage.  Parking spaces may not be available for guests or they may be limited in number and location.  Tandem parking will be permitted only with our prior written consent. You may install an electric vehicle charging station only with our advanced written consent, which will be granted or withheld in our sole discretion, except as otherwise provided by law.  Operate your vehicle safely and limit your vehicle’s speed to 5 miles per hour within the Property. ",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"You must immediately vacate and remove all vehicles from the Property",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(a) if you do not pay parking or garage fees (if any) when due;",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(b) after service of any notice allowed by law; and",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"(c) at the earlier of the Termination Date or the date that you vacate the Residence.  Unless otherwise agreed by us, Garage/Parking Rent will be due during the entire term of your tenancy.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"40 Pets",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"You may not feed stray or wild animals.You may not have any pets at the Residence or on the Property without our prior written consent, which we may withhold in our sole discretion. This prohibition applies to all pets, including “visiting” pets.We grant you permission to keep any pets listed above in the Variable Lease Term section as an “Authorized Pet.”If any pets are authorized you agree to follow the following rules for your pet(s):",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} Pets may not cause any disturbance that might reasonably annoy neighbors including making noise, creating odors, or leaving waste on the Property.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} Any damage caused by a pet will be your responsibility and you will be charged to repair it. This includes (but is not limited to) window coverings, carpet cleaning or replacement, damage to walls, flooring, screens and common area landscape.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} Pick up after your pet(s) and properly dispose of all waste.Kitty litter must be placed in a bag before placing it in the trash.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} Use a stain and odor-removing product with enzymes (such as Nature’s Miracle) as necessary, and maintain the Residence in a sanitary, odor-free condition.You can determine where the stain and odor-removing product with enzymes must be used by viewing the Residence with a black light.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} If your pet is a cat, keep a scratching post. `,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} Pets must be licensed and vaccinated in accordance with local laws. You must provide proof if we request it.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} Comply with all local laws and regulations relating to the pets.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} Take action to avoid pest infestations (fleas, etc.) in the Residence and Property.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:`${bulPoint} You must confine your pet if we or our Related Parties need access to the Residence.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:`${bulPoint} Pets must remain inside the Residence unless they are under direct control of a responsible person at all times.Dogs must be on a leash when outside of the Residence.You agree to defend, indemnify and save us harmless from all loss, claim, damage or liability relating to your pets.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:`${bulPoint} You represent to us that the pet is housebroken, has no vicious tendencies or history of threatening or causing harm to persons by biting, scratching, chewing or otherwise.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:`${bulPoint} Pets are not allowed in pool areas, clubhouses, business office, laundry rooms, business center or fitness centers. Pets may not be bathed or groomed in the laundry room sinks, pools, or pool area.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:`${bulPoint} Permission to have a pet may be revoked at any time with three days’ notice for cause, or with thirty days’ notice without cause. You will be asked to remove any pet that bothers others or constitutes a problem (potential or actual) to neighbors or others, as determined in our sole discretion. If you fail to remove your pet after being requested to do so, this will be a material breach of the Agreement, allowing us to terminate your tenancy.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"41. Pool/Spa",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"If the Property has a pool or spa, you may use them only during posted hours.  Children under the age of fourteen (14) must have adult supervision in the pool and spa. You may not serve or eat food in or around the pool area at any time without our consent.  Drinks must be served in unbreakable containers, and no alcoholic drinks are allowed in the pool area.  For safety reasons, people should not use the pool and/or spa alone, should not dive into the pool (unless off of a diving board) or spa, and no intoxicated persons may use the pool or spa.  Be considerate of others.  Don’t be excessively noisy or rowdy or wear excessively revealing clothing.  Please shower before using the pool and spa.  Do not use inner tubes, rafts or any other personal items or objects in the pool if they disturb others (with the exception of personal flotation devices for persons who cannot swim).   Incontinent people using the pool or spa must use waterproof pants. Use the pool safety equipment only in case of emergency.",
+    opt:p1Options
+  },
+  {
+    type:'text',
+    val:'NO LIFEGUARD WILL BE ON DUTY.',
+    opt:p1Bold
+  },
+  {
+    type:'text',
+    val:'People use the pool and spa at their own risk.  We will not be responsible for accident or injury, or articles that are lost, damaged or stolen.',
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"42. Posted signs and instructions from landloard",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"You must obey all posted signs on the Property and instructions from us.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"43. Posting Flyers",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"Flyers may be posted only in designated areas, if any.  If flyers are allowed to be posted, we may remove any commercial or offensive material, or material not in keeping with the nature of the Property, as determined in our sole discretion.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"44. Representations of Resident",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"You warrant that all statements in your rental application and other documents submitted by you to us (whether previously or in the future) are accurate.  If they are not, this will be a non-curable breach of this Agreement and we may terminate your tenancy.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"45. Satellite Dishes",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"You may install a satellite dish for personal, private use under the following conditions:",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} The satellite dish must be one meter or less in diameter;`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} The satellite dish may only be installed in the Residence in areas within your exclusive control.No part of the satellite dish may extend beyond a balcony or patio railing.The satellite dish may not be installed in common areas, including but not limited to the roof, outside walls, window sills, common balconies, hallways or stairways.Note that allowable locations may not provide an optimal signal, or any signal. We do not warrant that the Residence will provide a suitable location for receiving a satellite signal.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:`${bulPoint} You may not make physical modifications to the Property and may not cause physical or structural damage to the Property.No holes may be drilled through exterior walls or the roof.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:`${bulPoint} You must install, maintain and remove the satellite dish in a manner consistent with industry standards and you will be liable for any damage or injury caused by the installation, maintenance or removal of the satellite dish.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:`${bulPoint} You must move the satellite dish at your expense, upon our request, for Residence or Property maintenance or repairs.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"46. Security",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"47. Signs",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"We retain the right to place For Sale/For Rent signs on the Residence.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"48. Smoke and Carbon Monoxide Detectors",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"The Residence is equipped with a functioning smoke detection device(s) and may be equipped with a functioning carbon monoxide detector.You must test the device(s) weekly and immediately report any repair needs to us.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+
+  {
+    type:'text',
+    val:"49. Smoke Free Areas",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"The parties want to reduce or eliminate (i) the irritation and known health effects of secondhand smoke; (ii) the increased maintenance, cleaning and redecorating costs from smoking, and (iii) the increased risk of fire and insurance costs associated with smoking.  “Smoking” means inhaling, exhaling, breathing, or carrying any lighted cigar, cigarette, e-cigarette, or other similar lighted product (whether tobacco, marijuana, or any other substance) in any manner or in any form. You and your Related Parties may not smoke anywhere in the designated smoke-free areas, described in the Variable Lease Term section.  You must inform your Related Parties of the no-smoking policy. Other residents of the Property are third-party beneficiaries of this Agreement provision (your smoke-free obligations and restrictions are made to benefit other Property residents as well as to us.) A resident may sue another resident for an injunction to prohibit smoking or for damages, but may not evict another resident.  We will have the right, but not the obligation, to enforce your smoke-free obligations.  A material breach of your smoke-free obligations will be a material breach of this Agreement and grounds for immediate termination of this Agreement and your tenancy.  Neither we nor our Related Parties guarantee or warranty the smoke-free condition of the designated smoke-free areas or the health of you or your Related Parties. We make no implied or express warranties that the Residence or Property will have higher air quality standards than any other areas.  The success of our efforts to make the designated areas smoke-free depend on voluntary compliance by you and others.  We reserve the right to change or eliminate our smoke-free policy in the future.  You acknowledge that current residents may not be under the same smoke-free restrictions.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"50. Storage",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"If specified above in the Variable Lease Term section, a separate storage area is provided to you. If specified, monthly Storage Rent is charged for this privilege.Storage space may be used only for storage of non-perishable personal property, expressly excluding (a) any potentially dangerous, flammable, hazardous or toxic property or materials, and (b) any firearms or ammunition.We reserve the right to assign to you another storage space with 5 days’ prior notice to you.You must vacate and remove stored property (a) if you do not pay storage fees (if any) when due; (b) after service of any notice allowed by law; and (c) at the earlier of the Termination Date or the date you vacate the Residence.Unless we otherwise agree, the Storage Rent will be due during the entire term of your tenancy.If you do not remove stored property from the storage space when required, the remaining stored property may be deemed abandoned and we may dispose of it as allowed by law.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"51. Telephones",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"We will comply with California law by providing at least one usable telephone jack and maintaining the telephone wiring inside the Residence in good working condition.  There may be multiple telephone service providers in the area where the Residence is located.  Providers may vary in the services provided and fees charged for connection and/or other charges in service.  Some service providers may charge fees of $120.00 or more to change telephone service from another company to their own.  We make no representation regarding which service provider, if any, provided service to prior tenants.  Our obligation to maintain inside wiring does not include liability for fees to cross-connect to activate service.  You are responsible to arrange all service connections and pay any and all fees associated with the service.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"52. Temporary Relocation",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"You agree, at our demand, to temporarily vacate the Residence for a reasonable period and for reasonable purpose, including fumigation, Residence testing/inspection, or repairs.  You must comply with all instructions necessary to prepare the Residence for fumigation, testing/inspection or repair.  If you must vacate, you will be entitled only to an abatement of Rent equal to the per diem Rent for the period that you are required to vacate the Residence, and only if you must vacate for more than 12 hours, and only if you did not cause or exacerbate the condition requiring you to vacate, and only if we do not provide you with alternate housing.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"53. Use",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"The Residence may be used as a personal residence only and not for any business or commercial use (except child care as specified by law).   However, you may maintain a personal home office if the home office use does not involve (1) people coming to the Residence for business purposes, or (2) selling goods or services from the Residence.  You may not conduct any auction, garage sale, yard sale or similar activities in the Residence or in the Common Areas.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"54. Utilities",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"Details about utilities, (including information about who is responsible for the cost of each utility), are specified in the Variable Lease Term section.  If it is specified that you will contract directly with the utility provider, you must do so before move-in to avoid an interruption of services. If electricity, natural gas, water or sewer services have been discontinued, occupancy of the Residence is hazardous and will be a breach of this Agreement.  Billing statements provided by us or by our billing service must be paid by the due date specified on the billing statement.   If you don’t pay utility-related charges when they are due, we may discontinue providing the utility to you (if allowed by law), and your failure will be a material breach of this Agreement.   We reserve the right to change utility billing service providers.  If we do, you will be notified in writing.  You will be responsible for utilities designated as being your responsibility consumed during your occupancy beginning on the date of delivery of possession until we reacquire possession of the Residence.  If you breach this Agreement by vacating the Residence before the end of the term, you will also be responsible for utility-related charges until the earlier of the Termination Date or until the Residence is re-rented. The due date for Basic Rent and the due date for utility-related charges may not coincide.  You must comply with all utility conservation efforts (whether implemented by governmental agencies, water providers or us) and if you fail to do so, this will be a material violation of this Agreement allowing us to terminate your tenancy. You will be responsible for any fines or charges we incur because of your failure. You must pay charges for utilities you consume, even if they have not been invoiced before you vacate the Residence.  Any obligation that remains unpaid, including amounts that have not yet been invoiced when we reacquire possession, may be deducted from your Security Deposit. If actual amounts have not been determined before we provide an accounting of your Security Deposit, we may estimate the amount until actual numbers become available.  Any billings based on submeter readings will itemize the beginning and ending meter readings, the rate charged to you, and all categories of information that appear within the utility’s standard billing format to us.  We reserve the right to modify the method by which utilities are provided to the Residence or billed to you during your tenancy.  If we are billed for utility services which are your responsibility, you must repay us for the charges within 10 days of our demand for payment.  You may not disturb, tamper, adjust, or disconnect any submetering device or system. We may estimate your consumption if your submeter is broken or does not transmit a meter reading or if we have not received invoices from the utility provider in time to prepare your invoice.  We are not liable for claims arising from utility service outages, interruptions, or fluctuations in utilities provided to your Residence not reasonably within our control.  Common area utilities are for our use only; you may not use them for your personal use. ",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"55. Window Coverings",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"If we provide window coverings, you must use them.If we do not provide window coverings, any window treatments you install must appear white to the outside.Do not use sheets, blankets, foil, etc., in place of draperies or blinds.Do not place objects on a window sill which are visible from the outside.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"56. Waterbeds and Aquariums",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"Waterbeds are permitted only with our written permission which will be provided in accordance with California law.  Permission may be conditioned on insurance protecting us, an increase in the security deposit equal to one-half month’s Base Rent, and installation and maintenance in accordance with industry standards.  You must also obtain our permission to have an aquarium of more than 5 gallons.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"F. Disclosures and Notices",
+    opt:pSectionTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"1. Abestos",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"Asbestos is known to cause cancer.  Any knowledge or records we have of asbestos in the Residence or Property is specified in the Variable Lease Term section of this Agreement.  Disturbing or damaging asbestos containing materials may increase the potential exposure to asbestos.  Do not pierce or damage asbestos containing material.  Notify us immediately in writing if there is any damage to or deterioration of the asbestos containing materials. ",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"2. Lead Warning Information",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"If indicated in the Variable Lease Term section, the Residence was built prior to 1978.  Housing built before 1978 may contain lead-based paint.  Lead from lead-based paint, paint chips and dust can pose health hazards if not managed properly.  Lead exposure is especially harmful to young children and pregnant women.  Before renting pre-1978 housing, landlords must disclose the presence of known lead-based paint and/or lead-based paint hazards in the dwelling.  Residents must also receive a federally approved pamphlet on lead poisoning prevention. ",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"Knowledge we have of lead-based paint and/or lead-based paint hazards in the Residence or Property is specified in the Variable Lease Term section.  Available reports or records pertaining to lead-based paint and/or lead-based paint hazards in the Residence or Property are identified.  Your signature on this Agreement is your acknowledgment that you have been provided a copy of the pamphlet Protect Your Family From Lead In Your Home and that the reports or records have been made available for your review.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"3. Registered Sex Offenders Notice",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"Pursuant to Section 290.46 of the Penal Code, information about specified registered sex offenders is made available to the public via an Internet Web site maintained by the Department of Justice at www.meganslaw.ca.gov.  Depending on an offender’s criminal history, this information will include either the address at which the offender resides or the community of residence and ZIP Code in which he or she resides.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"G. Breaches and Remedies",
+    opt:pSectionTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"1. Resident Default",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"Your right to remain in possession of the Residence is conditioned on your timely and full performance of each of your obligations under this Agreement and applicable law. You will be in material default under the Agreement:",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} If you abandon or vacate the Residence;`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} If you fail to pay Rent, or any other charge required to be paid by you, as and when due;`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} If you breach any other obligation under this Agreement or applicable law;`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:`${bulPoint} If you have supplied any false or misleading information to us on a rental application or otherwise.This type of default is non-curable.`,
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"2. Remedies",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"If you default, we may elect to terminate your rights under this Agreement, and recover from you all damages we incur as a result of the default, including the cost of recovering possession of the Residence, rental commissions, advertising expenses and other costs incurred because of your breach of the Agreement and the Rent and other amounts due through the end of the Agreement term, (including Rent due up through the date you vacate the Residence, Rent due through the date of judgment, and Rent due after the date of judgment through the end of the original Agreement term) and any other amount necessary to compensate us for your breach of the Agreement, minus amounts we reasonably could have avoided.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"3. Cumulative Remedies",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"All remedies specified in this Agreement for noncompliance are cumulative.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"4. Credit",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"A negative report reflecting on your credit record may be submitted to credit-reporting agencies if you fail to fulfill the terms of your obligations under this Agreement.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"5. Damages for failure to vacate",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"If you fail to completely vacate the Residence when required, you will be liable for all resulting losses suffered by us including but not limited to, future resident losses, lost Rent, legal costs and other expenses.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"6. Attorney Fees",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"In any legal action brought by either party to enforce this Agreement or relating to the Residence, the prevailing party will be entitled to all costs incurred in connection with that action, including reasonable attorney fees, expert witness and consultant fees, and costs and expenses.  If an Attorney’s Fee Cap is specified in the Variable Lease Term section, attorney’s fees awarded by a court may not exceed that amount.  You must pay all collection-agency fees we incur if you fail to pay all sums due within 10 days after we mail you your security deposit accounting or other demand for payment.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"H. Agreement Interpretation",
+    opt:pSectionTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"1. Agreement",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"The submission of this Agreement to you for examination and/or execution does not constitute an option or offer. This Agreement will not be effective until signed and delivered by all parties or until we deliver possession of the Residence to you, whichever occurs first.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"2. Amendment",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"This Agreement may not be amended or altered except by a written agreement, signed by you and us.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"3. Construction",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"The singular form will include plural, and visa versa. This Agreement will not be construed as if it had been prepared by one of the parties, but rather as if both parties have prepared it.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"4. Integration",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"This Agreement and the documents referenced in it constitute the entire agreement between the parties, which supersedes all prior and contemporaneous negotiations, agreements, promises and representations. ",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"5. Partial Invalidity",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"If any portion of this Agreement is unenforceable or invalid, that portion will have no effect, but all the remaining provisions of this Agreement will remain in full force.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"6. Successors and Assigns",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"This Agreement is binding upon and inures to the benefit of the heirs, assigns, successors, executors, and administrators of you and us.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"7. Time of the Essence",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"Time is of the essence as to each obligation to be performed under this Agreement.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"8. Verbal Representations",
+    opt:pNumTitle
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"You agree that we have not made any oral promises, representations, or agreements not contained within this written Agreement. ",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"Our failure to enforce any term of this Agreement will not be deemed a waiver, nor will acceptance of a partial payment be deemed a waiver of our right to the full amount due.  Waiver may not be established by course of conduct.  No waiver will exist unless written and signed by the parties.",
+    opt:p1Options
+  },
+  {type:'linebreak'},
+  {
+    type:'text',
+    val:"If the lead hazard section of this Agreement is marked as being applicable, by signing below, the parties acknowledge that they have read the lead-based paint and lead based paint hazard information in this Agreement and certify, to the best of the parties’ knowledge, that the information provided is true and correct.",
+    opt:p1Options
+  },
+  {
+    type:'text',
+    val:"Note that this Agreement may automatically continue as a tenancy from month-to-month after the Termination Date. See paragraph C3 above.",
+    opt:p1Options
+  },
+
+
+
+
 
 
 
