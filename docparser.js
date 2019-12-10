@@ -1,7 +1,7 @@
 require('dotenv').config();
 const docparser = require('docparser-node');
-const client = new docparser.Client('8a19ad7cdaa2265927150152f4429841a40df1ef');
-
+const client = new docparser.Client(process.env.DOCPARSER);
+const airTableAPI = require('./airtable');
 // client.ping().then(()=>{
 //   console.log('Authentication Succeeded!')
 // }).catch((err)=>{
@@ -13,21 +13,35 @@ const client = new docparser.Client('8a19ad7cdaa2265927150152f4429841a40df1ef');
 // }).catch((err) => {
 //   console.log(err)
 // })
-function docParser () {
 
-  client.uploadFileByPath('pkinyhgalauc','./House_applications/Sample Rentak Application.pdf', {
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+var hour = today.getHours();
+var minute = today.getMinutes();
+
+today = mm + '/' + dd + '/' + yyyy + hour + minute;
+
+
+async function docParser (docPath) {
+  console.log("[DocParser]"+docPath)
+
+  let path = `./House_applications/${docPath}`
+  console.log(path)
+
+  client.uploadFileByPath('hroogvexclwg',`${path}`, {
     remote_id: 'test'
   }).then(function(result) {
-    console.log(result)
     const documentID = result.id;
+    console.log(result)
   
     setTimeout(function(){
     let docData =  grabDocParserData(documentID);
-    console.log(docData);
     
     return docData;
 
-    }, 120000);
+    }, 240000);
   
   }).catch(function(err){
     console.log(err)
@@ -37,24 +51,45 @@ function docParser () {
 
 function grabDocParserData (docID){
   
-  client.getResultsByDocument('pkinyhgalauc',`${docID}`, {format:'object'}).then(function(result){
-    console.log(result)
-    let applicant = result[0].applicant_name.last;
+  client.getResultsByDocument('hroogvexclwg',`${docID}`, {format:'object'}).then(function(result){
+    // console.log(JSON.stringify(result))
+    let applicant = result[0].applicant_name;
     let address = result[0].address;
     let full_address = result[0].full_address;
     let price = result[0].rent_price;
-    let additionalApplicant = result[0].additional_applicants.last;
+    let residents = result[0].residents
     let dependents = result[0].dependents;
-    console.log(`\n [Applicant]${applicant} , [Address] ${address} , [Full Address] ${full_address} , [Price] ${price} , [AdditionalApplicant] ${additionalApplicant} , [Dependents] ${dependents}`)
+    let streetAddress = result[0].streetaddress;
+    let unitNumber = result[0].unitnumber;
+    let pets = result[0].pets;
+    let guarantors = result[0].guarantors;
   
+    if(unitNumber == null){
+      unitNumber = " "
+    }else {
+      unitNumber = result[0].unitnumber;
+    }
+    if(unitNumber == 'Year'){
+      unitNumber = " ";
+    }
+    console.log(unitNumber)
     let docResult = {
+
       applicant: applicant,
       address: address,
       full_address: full_address,
       price: price,
-      addApplicant: additionalApplicant,
-      dependents: dependents
+      residents: residents,
+      dependents: dependents,
+      streetAddress: streetAddress,
+      unitNumber: unitNumber,
+      pets: pets,
+      guarantors: guarantors
+      
     }
+    console.log(docResult)
+    airTableAPI.airTableData(docResult)
+
     return docResult;
   
   }).catch(function(err){
@@ -62,7 +97,7 @@ function grabDocParserData (docID){
   })
 
 }
-docParser();
+
 
 module.exports = {
   docParser
